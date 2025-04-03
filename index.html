@@ -16,16 +16,18 @@
     </header>
 
     <main>
-        <section id="listings">
-            <h2>Available Listings</h2>
-            <div id="listing-container"></div>
+        <section id="add-listing">
+            <h2>Add a New Listing</h2>
+            <div class="input-group">
+                <input type="text" id="listing-title" placeholder="Item Name">
+                <input type="number" id="listing-price" placeholder="Price">
+                <button id="add-listing-btn">Add Listing</button>
+            </div>
         </section>
 
-        <section id="add-listing">
-            <h2>Add a Listing</h2>
-            <input type="text" id="listing-title" placeholder="Item Title">
-            <input type="number" id="listing-price" placeholder="Price">
-            <button id="add-listing-btn">Add Listing</button>
+        <section id="listings">
+            <h2>Available Listings</h2>
+            <div id="listing-container" class="listings-grid"></div>
         </section>
     </main>
 
