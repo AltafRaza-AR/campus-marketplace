@@ -14,7 +14,27 @@ document.addEventListener("DOMContentLoaded", function () {
             div.innerHTML = `
                 <h3>${listing.title}</h3>
                 <p>Price: $${listing.price}</p>
+                <input type="number" class="offer-input" placeholder="Your Offer" min="1">
+                <button class="offer-button">Make Offer</button>
+                <div class="offers"></div>
             `;
+
+            const offerButton = div.querySelector(".offer-button");
+            const offerInput = div.querySelector(".offer-input");
+            const offersDiv = div.querySelector(".offers");
+
+            offerButton.addEventListener("click", function () {
+                const offerPrice = offerInput.value.trim();
+                if (offerPrice === "") {
+                    alert("Enter a valid offer price.");
+                    return;
+                }
+                const offerText = document.createElement("p");
+                offerText.innerHTML = `<strong>Offer:</strong> $${offerPrice}`;
+                offersDiv.appendChild(offerText);
+                offerInput.value = "";
+            });
+
             listingContainer.appendChild(div);
         });
     }
