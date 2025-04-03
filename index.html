@@ -9,30 +9,26 @@
 <body>
     <header>
         <h1>Campus Marketplace</h1>
-        <nav>
-            <ul>
-                <li><a href="#login">Login</a></li>
-                <li><a href="#listings">Listings</a></li>
-                <li><a href="#messages">Messages</a></li>
-            </ul>
-        </nav>
+        <div class="auth-buttons">
+            <button id="google-login">Login with Google</button>
+            <button id="logout">Logout</button>
+        </div>
     </header>
-    
-    <section id="login">
-        <h2>Login</h2>
-        <button id="google-login">Login with Google</button>
-    </section>
-    
-    <section id="listings">
-        <h2>Listings</h2>
-        <div id="listing-container"></div>
-    </section>
-    
-    <section id="messages">
-        <h2>Messages</h2>
-        <div id="chat-container"></div>
-    </section>
-    
+
+    <main>
+        <section id="listings">
+            <h2>Available Listings</h2>
+            <div id="listing-container" class="listings-grid"></div>
+        </section>
+
+        <section id="add-listing">
+            <h2>Add a Listing</h2>
+            <input type="text" id="listing-title" placeholder="Item Title">
+            <input type="number" id="listing-price" placeholder="Price">
+            <button id="add-listing-btn">Add Listing</button>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
