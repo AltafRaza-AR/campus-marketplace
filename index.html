@@ -3,10 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Campus Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 className="mt-2"> HUI HUI</h1>
+    <header>
+        <h1>Campus Marketplace</h1>
+        <nav>
+            <ul>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#listings">Listings</a></li>
+                <li><a href="#messages">Messages</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="login">
+        <h2>Login</h2>
+        <button id="google-login">Login with Google</button>
+    </section>
+    
+    <section id="listings">
+        <h2>Listings</h2>
+        <div id="listing-container"></div>
+    </section>
+    
+    <section id="messages">
+        <h2>Messages</h2>
+        <div id="chat-container"></div>
+    </section>
+    
+    <script src="script.js"></script>
 </body>
 </html>
