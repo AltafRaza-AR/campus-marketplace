@@ -5,17 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus Marketplace</title>
     <link rel="stylesheet" href="styles.css">
+    <script type="module" src="script.js"></script>
 </head>
 <body>
     <header>
         <h1>Campus Marketplace</h1>
         <div class="auth-buttons">
             <button id="google-login">Login with Google</button>
-            <button id="logout">Logout</button>
+            <button id="logout" style="display: none;">Logout</button>
         </div>
     </header>
 
     <main>
+        <section id="user-info" style="display: none;">
+            <h2>Welcome, <span id="user-name"></span></h2>
+            <img id="user-photo" src="" alt="User Photo">
+        </section>
+
         <section id="add-listing">
             <h2>Add a New Listing</h2>
             <div class="input-group">
@@ -30,7 +36,5 @@
             <div id="listing-container" class="listings-grid"></div>
         </section>
     </main>
-
-    <script src="script.js"></script>
 </body>
 </html>
