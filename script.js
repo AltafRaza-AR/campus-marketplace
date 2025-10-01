@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const div = document.createElement("div");
             div.classList.add("listing");
             
-            // Use image if available, otherwise show a placeholder
             const imageElement = listing.image
                 ? `<img src="${listing.image}" alt="${listing.title}">`
                 : `<div class="listing-image-placeholder">No Image</div>`;
@@ -71,30 +70,34 @@ document.addEventListener("DOMContentLoaded", () => {
         const imageFile = document.getElementById("listing-image").files[0];
         
         const newListing = {
-            id: Date.now(), // Simple unique ID
+            id: Date.now(),
             title,
             description,
             price,
             image: null
         };
         
-        if (imageFile) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                newListing.image = event.target.result; // Base64 string of the image
-                listings.push(newListing);
-                saveListings();
-                renderListings();
-            };
-            reader.readAsDataURL(imageFile);
-        } else {
+        // This function contains all the steps after the listing is ready
+        const finalizeAndRender = () => {
             listings.push(newListing);
             saveListings();
             renderListings();
-        }
+            addListingForm.reset();
+            addListingModal.style.display = "none";
+        };
 
-        addListingForm.reset();
-        addListingModal.style.display = "none";
+        if (imageFile) {
+            const reader = new FileReader();
+            // This runs AFTER the image has been loaded
+            reader.onload = function(event) {
+                newListing.image = event.target.result;
+                finalizeAndRender(); // Now we finalize and render
+            };
+            reader.readAsDataURL(imageFile);
+        } else {
+            // If no image, we can finalize and render immediately
+            finalizeAndRender();
+        }
     });
 
     // Handle deleting listings (using event delegation)
@@ -104,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (confirm("Are you sure you want to delete this listing?")) {
                 listings = listings.filter(listing => listing.id !== listingId);
                 saveListings();
-                renderListings(searchBar.value); // Re-render with current search filter
+                renderListings(searchBar.value);
             }
         }
     });
